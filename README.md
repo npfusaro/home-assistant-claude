@@ -13,8 +13,8 @@ administrator account on your Home Assistant.
 1. Clone this repository and open it:
 
    ```
-   git clone https://github.com/npfusaro/ha-claude-setup.git
-   cd ha-claude-setup
+   git clone https://github.com/npfusaro/home-assistant-claude.git
+   cd home-assistant-claude
    claude
    ```
 
