@@ -1,16 +1,15 @@
 # Home Assistant + Claude Code setup
 
-**For the human:** open a terminal in this folder, run `claude`, and say
-**"follow SETUP.md"**. Claude installs and checks everything; you do the two steps that
-involve your Home Assistant token. It takes about ten minutes and works on macOS,
-Linux and Windows.
+**For the human:** open a terminal in this folder and run `claude "follow SETUP.md"`.
+Claude installs and checks everything; you do the two steps that involve your Home
+Assistant token. It takes about ten minutes and works on macOS, Linux and Windows.
 
 You need: Claude Code, network access to your Home Assistant, and an administrator
 account on it. Nothing gets installed on the Home Assistant box itself.
 
-To re-check things later (for example after a Home Assistant update), say
-**"follow SETUP.md from phase 6"**. To update ha-mcp itself, say
-**"follow SETUP.md phase 9"**.
+To re-check things later (for example after a Home Assistant update), run
+`claude "follow SETUP.md from phase 6"`. To update ha-mcp itself, run
+`claude "follow SETUP.md phase 9"`.
 
 ---
 
@@ -146,8 +145,7 @@ was probably run in a different folder; ask them to run it again from this one.
 MCP servers load when Claude Code starts. Ask the user to:
 
 1. Type `/exit`.
-2. Run `claude` again in this folder.
-3. Say **"follow SETUP.md from phase 6"**.
+2. In the same folder, run: `claude "follow SETUP.md from phase 6"`
 
 ## Phase 6 — Test the connection (Claude, using the `ha` tools)
 
@@ -200,8 +198,8 @@ Tell the user, in a few lines:
 - How to use it: just ask. Examples: "what's on in the kitchen", "why didn't the porch
   light automation fire last night", "create an automation that turns the hallway light
   on at sunset", "add a card for the garage door to the Overview dashboard".
-- How to check it later: "follow SETUP.md from phase 6".
-- How to update ha-mcp: "follow SETUP.md phase 9". ha-mcp checks for a newer release
+- How to check it later: `claude "follow SETUP.md from phase 6"`.
+- How to update ha-mcp: `claude "follow SETUP.md phase 9"`. ha-mcp checks for a newer release
   each time it starts and reports it inside `ha_get_system_health` and
   `ha_get_overview` results; Claude mentions it when it sees it but never updates on
   its own.
@@ -220,7 +218,7 @@ and the upgrade replaces it in place. The bundled best-practices skill updates w
 2. Upgrade: `.venv/bin/pip install --upgrade ha-mcp` (Windows:
    `.venv\Scripts\pip install --upgrade ha-mcp`). Tell the user the new version.
 3. The running server is the old one until Claude Code restarts. Ask the user to
-   `/exit`, run `claude` again, and say **"follow SETUP.md from phase 6"**.
+   `/exit` and then run `claude "follow SETUP.md from phase 6"`.
 4. If phase 6 then fails on something that passed before, roll back with
    `.venv/bin/pip install ha-mcp==<old version>` and restart again, and tell the user
    which release broke what so they can report it upstream.

@@ -10,23 +10,25 @@ Linux and Windows.
 You need Claude Code, Python 3.13 or newer (or [uv](https://docs.astral.sh/uv/)), and an
 administrator account on your Home Assistant.
 
-1. Clone this repository and open it:
+Clone this repository and start Claude with the setup prompt:
 
-   ```
-   git clone https://github.com/npfusaro/home-assistant-claude.git
-   cd home-assistant-claude
-   claude
-   ```
-
-2. Say: **follow SETUP.md**
+```
+git clone https://github.com/npfusaro/home-assistant-claude.git
+cd home-assistant-claude
+claude "follow SETUP.md"
+```
 
 Claude installs and checks everything. You do two things yourself: create a Home
 Assistant access token, and paste it into one command in your own terminal. The token
 never goes into the chat.
 
-To check that everything still works later, for example after a Home Assistant update,
-open the folder, run `claude`, and say **follow SETUP.md from phase 6**. To update the
-MCP server, say **follow SETUP.md phase 9**.
+Afterwards, just run `claude` in the folder and ask for what you want. Two other
+starting prompts are useful later:
+
+```
+claude "follow SETUP.md from phase 6"    # check everything still works, e.g. after an HA update
+claude "follow SETUP.md phase 9"         # update the MCP server
+```
 
 ## What's here
 
