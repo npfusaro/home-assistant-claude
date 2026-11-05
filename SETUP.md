@@ -103,18 +103,38 @@ from phase 3, and then wait.
    `http://192.168.1.50:8123` or `http://homeassistant.local:8123`. Use the local one
    when this computer is on the same network.
 3. **Open a second terminal window** (not this Claude conversation), go to this folder,
-   and run the following, replacing the two placeholders. On Windows use the
-   `.venv\Scripts\ha-mcp.exe` path. Do not run it inside Claude Code with the `!`
-   prefix: that output lands in the conversation, token included.
+   and run the following, replacing the two placeholders. Do not run it inside Claude
+   Code with the `!` prefix: that output lands in the conversation, token included.
+
+   It is one command split over five lines so it survives copy and paste; paste all
+   five lines together. Claude: print it exactly in this form, with the real path
+   filled in, inside a code block. Never join it onto one line and never break a line
+   anywhere else, because a stray line break makes the shell run half a command.
+
+   macOS / Linux:
 
    ```
-   claude mcp add ha -e HOMEASSISTANT_URL=http://YOUR-HA-ADDRESS:8123 -e HOMEASSISTANT_TOKEN=PASTE-YOUR-TOKEN-HERE -e ENABLE_MANDATORY_BPS=false -- /ABSOLUTE/PATH/TO/.venv/bin/ha-mcp
+   claude mcp add ha \
+     -e HOMEASSISTANT_URL=http://YOUR-HA-ADDRESS:8123 \
+     -e HOMEASSISTANT_TOKEN=PASTE-YOUR-TOKEN-HERE \
+     -e ENABLE_MANDATORY_BPS=false \
+     -- /ABSOLUTE/PATH/TO/.venv/bin/ha-mcp
+   ```
+
+   Windows (PowerShell):
+
+   ```
+   claude mcp add ha `
+     -e HOMEASSISTANT_URL=http://YOUR-HA-ADDRESS:8123 `
+     -e HOMEASSISTANT_TOKEN=PASTE-YOUR-TOKEN-HERE `
+     -e ENABLE_MANDATORY_BPS=false `
+     -- C:\ABSOLUTE\PATH\TO\.venv\Scripts\ha-mcp.exe
    ```
 
    Expected reply: `Added stdio MCP server ha ...`. The token is now stored in Claude
    Code's own configuration for this folder, the same place every MCP server keeps its
-   settings. Tip: on macOS/Linux, start the command with a space so it stays out of your
-   shell history.
+   settings. Tip: on macOS/Linux, start the first line with a space so the command
+   stays out of your shell history.
 4. Come back here and say **"done"**.
 
 When the user says done, run `claude mcp list` and confirm a line starting with `ha:`
@@ -212,6 +232,9 @@ and the upgrade replaces it in place. The bundled best-practices skill updates w
   executable by hand with the two variables set in that terminal (the user does this,
   not Claude) to see the real error. A wrong URL or token is the usual cause: run
   `claude mcp remove ha` and redo phase 4.
+- **The terminal says `-e: command not found` or `ENABLE_MANDATORY_BPS=false: command
+  not found` after pasting.** The command was pasted with a line break in the wrong
+  place. Paste the five-line form from phase 4 again, all lines at once.
 - **Checks time out or fail with 401.** The token was revoked or mistyped. Create a new
   one and redo phase 4.
 - **Check 11 errors on an HA OS install.** The token's user must be an administrator.
