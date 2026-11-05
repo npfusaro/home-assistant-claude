@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+.claude/settings.local.json
+
+# Personal design notes, not part of the setup
+docs/reference/
